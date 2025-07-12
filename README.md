@@ -3,23 +3,25 @@
 
 ## 项目技术概述与版本
 ### 前端
-由资料取得，基本没有做修改，使用的是Vue3框架。
+由资料取得，基本没有做修改，使用的是**Vue3**框架。
 
 ### 后端
-==注：代码使用的依赖版本与仅供参考，部分插件新旧版本之间groupId或artifactId出现了更换。==
-- 框架：SpringBoot(Springboot3)
-- 数据库访问：mybatis-plus,spring data redis
+> 注：代码使用的依赖版本与仅供参考，部分插件新旧版本之间groupId或artifactId出现了更换。
+
+- 框架：**SpringBoot**(**Springboot3**)
+- 数据库访问：**mybatis-plus**,**spring data redis**
 > mybatis-plus是mybatis的增强版，有mybatis的核心功能以及一些简化开发，提升效率的功能。
-- 接口文档：knife4j(集成Springboot)
-> knife4j是swagger的一个美化增强版。
-- 对象存储服务OSS：minio
+- 接口文档：**knife4j**(集成Springboot)
+> **knife4j**是**swagger**的一个美化增强版。
+- 对象存储服务OSS：**minio**
 > 对于对象存储，可以选择直接购买各大云厂商提供的服务，也可以选择使用开源的服务，自行安装和维护。本项目采用开源的对象存储Minio来存储图片信息。
-- 其他小工具：easy-captcha（验证码生成），lombok(简化代码)，jwt（用于用户token）等等
+- 其他小工具：**easy-captcha**（验证码生成），**lombok**(简化代码)，**jwt**（用于用户token）等等
 
 ### 数据库
-==注：版本仅供参考，注意保证JDBC支持对应版本==
-- MySQL: 8.0.42
-- Redis: 7.0.15
+> 注：版本仅供参考，注意保证JDBC支持对应版本
+
+- **MySQL**: 8.0.42
+- **Redis**: 7.0.15
 
 ## 项目调试与部署
 ##### **项目采用前后端分离架构。**
