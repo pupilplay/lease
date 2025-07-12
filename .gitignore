@@ -40,3 +40,23 @@ node_modules/
 jscoverage_lib/  
 bower_components/  
 dist/
+
+# 忽略这些文件夹
+target/
+.idea/
+.settings/
+.vscode/
+bin/
+out/
+
+# 忽略这些文件
+.classpath
+.project
+.settings
+.idea
+
+# 忽略特定类型的文件
+*.class
+*.jar
+*.zip
+*.log
