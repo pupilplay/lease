@@ -29,15 +29,17 @@ public class BrowsingHistoryServiceImpl extends ServiceImpl<BrowsingHistoryMappe
     }
 
     @Override
-    public void saveHistory(Long userId, Long id) {
-        BrowsingHistory browsingHistory = mapper.selectOne(new LambdaQueryWrapper<BrowsingHistory>().eq(BrowsingHistory::getUserId, userId));
+    public void saveHistory(Long userId, Long roomId) {
+        BrowsingHistory browsingHistory = mapper.selectOne(new LambdaQueryWrapper<BrowsingHistory>()
+                .eq(BrowsingHistory::getUserId, userId)
+                .eq(BrowsingHistory::getRoomId,roomId));
         if(browsingHistory!=null){
             browsingHistory.setBrowseTime(new Date());
             mapper.updateById(browsingHistory);
         }else{
             browsingHistory = new BrowsingHistory();
             browsingHistory.setUserId(userId);
-            browsingHistory.setRoomId(id);
+            browsingHistory.setRoomId(roomId);
             browsingHistory.setBrowseTime(new Date());
             mapper.insert(browsingHistory);
         }

@@ -85,7 +85,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
 
             roomLeaseTermService.remove(new LambdaQueryWrapper<RoomLeaseTerm>().eq(RoomLeaseTerm::getRoomId,roomSubmitVo.getId()));
 
-            String key = RedisConstant.APP_LOGIN_PREFIX+roomSubmitVo.getId();
+            String key = RedisConstant.APP_ROOM_PREFIX+roomSubmitVo.getId();
             redisTemplate.delete(key);
         }
 
@@ -200,7 +200,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
 
         roomLeaseTermService.remove(new LambdaQueryWrapper<RoomLeaseTerm>().eq(RoomLeaseTerm::getRoomId,id));
 
-        String key = RedisConstant.APP_LOGIN_PREFIX+id;
+        String key = RedisConstant.APP_ROOM_PREFIX+id;
         redisTemplate.delete(key);
     }
 }

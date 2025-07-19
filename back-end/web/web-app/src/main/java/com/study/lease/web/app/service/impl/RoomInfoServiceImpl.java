@@ -72,7 +72,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
 
     @Override
     public RoomDetailVo getDetailById(Long id) {
-        String key = RedisConstant.APP_LOGIN_PREFIX + id;
+        String key = RedisConstant.APP_ROOM_PREFIX + id;
         RoomDetailVo roomDetailVo = (RoomDetailVo) redisTemplate.opsForValue().get(key);
         if (roomDetailVo == null) {
             RoomInfo roomInfo = roomInfoMapper.selectById(id);
@@ -90,6 +90,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
             roomDetailVo.setFeeValueVoList(feeValueMapper.selectListByApartmentId(roomInfo.getApartmentId()));
             roomDetailVo.setLeaseTermList(leaseTermMapper.selectListByRoomId(id));
 
+            redisTemplate.opsForValue().set(key,roomDetailVo);
         }
         //Async method
         browsingHistoryService.saveHistory(LoginUserHolder.getLoginUser().getUserId(), id);
