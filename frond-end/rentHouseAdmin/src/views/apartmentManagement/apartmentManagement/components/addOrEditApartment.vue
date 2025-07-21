@@ -535,6 +535,10 @@ async function getApartmentInfoByIdHandle(id: number | string) {
 }
 // 新增或更新公寓信息
 async function addOrUpdateApartmentInfoHandle() {
+  //可以的话，不要循环，直接从选择框里取得名字
+  formData.value.provinceName = areaInfo.provinceList.find(item => item.id === formData.value.provinceId).name
+  formData.value.cityName = areaInfo.cityList.find(item => item.id === formData.value.cityId).name
+  formData.value.districtName = areaInfo.districtList.find(item => item.id === formData.value.districtId).name
   try {
     await saveOrUpdateApartment(formData.value)
     ElMessage.success('操作成功')
