@@ -6,7 +6,7 @@
 
     <select id="pageBySystem" resultType="com.study.lease.web.admin.vo.system.user.SystemUserItemVo">
         select
-        su.id, su.username, su.name, su.type, su.phone, su.avatar_url, su.additional_info, su.post_id,
+        su.id, su.username, su.name, su.type, su.phone, su.avatar_url, su.additional_info, su.post_id, su.status,
         sp.name post_name
         from system_user su join system_post sp on su.post_id=sp.id and sp.is_deleted=0
         <where>
