@@ -19,6 +19,7 @@ import com.study.lease.web.app.vo.graph.GraphVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -44,6 +45,7 @@ public class ViewAppointmentServiceImpl extends ServiceImpl<ViewAppointmentMappe
         return viewAppointmentMapper.listItem(id);
     }
 
+    @Transactional
     @Override
     public AppointmentDetailVo getDetailById(Long id) {
         AppointmentDetailVo appointmentDetailVo=new AppointmentDetailVo();

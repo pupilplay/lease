@@ -16,6 +16,7 @@ import com.study.lease.web.app.vo.user.UserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.rmi.dgc.Lease;
 import java.util.concurrent.TimeUnit;
@@ -48,6 +49,8 @@ public class LoginServiceImpl implements LoginService {
         return userInfoVo;
     }
 
+    //@Transactional
+    //TODO:不确定是否要事务
     @Override
     public String login(LoginVo loginVo) {
         if(loginVo.getPhone()==null){

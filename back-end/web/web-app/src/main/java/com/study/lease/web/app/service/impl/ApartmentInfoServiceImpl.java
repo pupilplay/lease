@@ -14,6 +14,7 @@ import com.study.lease.web.app.vo.graph.GraphVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -39,6 +40,8 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
     private FacilityInfoMapper facilityInfoMapper;
     @Autowired
     private FeeValueMapper feeValueMapper;
+
+    @Transactional
     @Override
     public ApartmentDetailVo getDeatilById(Long id) {
         ApartmentInfo apartmentInfo = apartmentInfoMapper.selectById(id);
@@ -56,6 +59,8 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
         return apartmentDetailVo;
     }
 
+
+    @Transactional
     @Override
     public ApartmentItemVo selectApartmentItemVoById(Long id) {
         ApartmentInfo apartmentInfo = apartmentInfoMapper.selectById(id);

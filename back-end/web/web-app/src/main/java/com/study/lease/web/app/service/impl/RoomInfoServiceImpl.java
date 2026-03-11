@@ -24,6 +24,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -70,6 +71,8 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         return roomInfoMapper.pageItemByApartmentId(page, id);
     }
 
+    @Transactional
+    //TODO:可能可以让事务粒度细一点，与redis逻辑分离
     @Override
     public RoomDetailVo getDetailById(Long id) {
         String key = RedisConstant.APP_ROOM_PREFIX + id;

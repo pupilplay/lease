@@ -19,6 +19,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -40,6 +41,7 @@ public class LoginServiceImpl implements LoginService {
         return new CaptchaVo(specCaptcha.toBase64(), key);
     }
 
+    @Transactional
     @Override
     public String login(LoginVo loginVo) {
         if (loginVo.getCaptchaCode() == null) {

@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.lease.web.app.vo.history.HistoryItemVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -28,6 +29,7 @@ public class BrowsingHistoryServiceImpl extends ServiceImpl<BrowsingHistoryMappe
         return mapper.pageItemByUserId(page,userId);
     }
 
+    @Transactional
     @Override
     public void saveHistory(Long userId, Long roomId) {
         BrowsingHistory browsingHistory = mapper.selectOne(new LambdaQueryWrapper<BrowsingHistory>()

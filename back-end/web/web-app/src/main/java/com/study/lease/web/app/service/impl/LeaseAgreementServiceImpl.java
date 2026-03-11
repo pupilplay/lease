@@ -11,6 +11,7 @@ import com.study.lease.web.app.vo.graph.GraphVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class LeaseAgreementServiceImpl extends ServiceImpl<LeaseAgreementMapper,
         return leaseAgreementMapper.listItemByPhone(username);
     }
 
+    @Transactional
     @Override
     public AgreementDetailVo getDetailById(Long id) {
 

@@ -19,6 +19,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
@@ -69,6 +70,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         return roomInfoMapper.pageItem(page,queryVo);
     }
 
+    @Transactional
     @Override
     public void saveOrUpdateRoom(RoomSubmitVo roomSubmitVo) {
         super.saveOrUpdate(roomSubmitVo);
@@ -154,6 +156,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         }
     }
 
+    @Transactional
     @Override
     public RoomDetailVo geteDetailById(Long id) {
         RoomInfo roomInfo = roomInfoMapper.selectById(id);
@@ -185,6 +188,7 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         return roomDetailVo;
     }
 
+    @Transactional
     @Override
     public void removeRoomById(Long id) {
         super.removeById(id);

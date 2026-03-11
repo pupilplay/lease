@@ -11,6 +11,7 @@ import com.study.lease.web.admin.vo.agreement.AgreementVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author liubo
@@ -30,6 +31,8 @@ public class LeaseAgreementServiceImpl extends ServiceImpl<LeaseAgreementMapper,
     private PaymentTypeMapper paymentTypeMapper;
     @Autowired
     private LeaseTermMapper leaseTermMapper;
+
+    @Transactional
     @Override
     public AgreementVo getAgreementById(Long id) {
         LeaseAgreement leaseAgreement = leaseAgreementMapper.selectById(id);

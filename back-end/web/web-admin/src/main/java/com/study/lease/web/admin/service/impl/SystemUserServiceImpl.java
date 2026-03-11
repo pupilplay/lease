@@ -13,6 +13,7 @@ import com.study.lease.web.admin.vo.system.user.SystemUserQueryVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author liubo
@@ -32,6 +33,7 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         return systemUserMapper.pageBySystem(page,queryVo);
     }
 
+    @Transactional
     @Override
     public SystemUserItemVo getSystemUserById(Long id) {
         SystemUser systemUser = systemUserMapper.selectById(id);
